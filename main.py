@@ -32,3 +32,14 @@ if page == "Capture and Extract Text":
     capture_and_extract_text()
 elif page == "Real-Time Image Captioning":
     real_time_image_captioning()
+    
+st.sidebar.markdown(
+    """
+    <br><br><br>
+    <a href="https://github.com/HappyHaru21/nexathon-mikroKitty" target="_blank">
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20"/>
+        GitHub Repository
+    </a>
+    """,
+    unsafe_allow_html=True
+)

@@ -107,7 +107,7 @@ def real_time_image_captioning():
     st.title("Live Video Feed")
     FRAME_WINDOW = st.image([])
 
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(2)
 
     if not cap.isOpened():
         st.error("Failed to open webcam.")

@@ -14,7 +14,7 @@ def extract_text_with_easyocr(image):
 
 def take_photo():
     # Capture image from webcam
-    video_capture = cv2.VideoCapture(1)  # Start webcam
+    video_capture = cv2.VideoCapture(2)  # Start webcam
     
     if not video_capture.isOpened():
         st.error("Could not open webcam.")
