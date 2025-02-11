@@ -5,10 +5,11 @@ from PIL import Image
 import torch
 from transformers import BlipProcessor, BlipForConditionalGeneration
 import win32com.client
+import pythoncom
 import threading
 
 # Load YOLO model
-yolo_net = cv2.dnn.readNet(r"yolov3.weights", 
+yolo_net = cv2.dnn.readNet(r"C:\study\ML-Projects\yolov3.weights", 
                            r"yolov3.cfg")
 layer_names = yolo_net.getLayerNames()
 output_layers = [layer_names[i - 1] for i in yolo_net.getUnconnectedOutLayers()]
@@ -22,8 +23,11 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
 model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large").to(device)
 
-# Initialize SAPI
-sapi = win32com.client.Dispatch("SAPI.SpVoice")
+def initialize_sapi():
+    pythoncom.CoInitialize()
+    return win32com.client.Dispatch("SAPI.SpVoice")
+
+sapi = initialize_sapi()
 
 def generate_caption(image):
     # Resize image to a reasonable size
