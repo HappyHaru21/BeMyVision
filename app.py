@@ -3,6 +3,8 @@ import easyocr
 import cv2
 import numpy as np
 from PIL import Image
+import win32com.client
+import pythoncom
 
 # Initialize EasyOCR reader
 reader = easyocr.Reader(['en'])
@@ -34,7 +36,11 @@ def take_photo():
     pil_img = Image.fromarray(frame_rgb)
     
     return pil_img
+def initialize_sapi():
+    pythoncom.CoInitialize()
+    return win32com.client.Dispatch("SAPI.SpVoice")
 
+sapi = initialize_sapi()
 def capture_and_extract_text():
     # Streamlit UI
     st.title("Capture and Extract Text from Photo")
@@ -57,3 +63,6 @@ def capture_and_extract_text():
             
             st.subheader("Extracted Text:")
             st.write(extracted_text)
+            sapi.Speak(extracted_text)
+            
+            
