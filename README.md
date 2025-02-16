@@ -26,8 +26,8 @@ This project aims to enable visually impaired individuals to visualize their env
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/HappyHaru21/nexathon-mikroKitty.git
-    cd nexathon-mikroKitty
+    git clone https://github.com/HappyHaru21/BeMyVision.git
+    cd BeMyVision
     ```
 
 2. Install the required Python packages:
